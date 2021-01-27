@@ -4,6 +4,7 @@
   "description": "Expense Tracking",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon ./server/src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,7 @@
   "homepage": "https://github.com/Mikaela95/project-2-expense-tracking#readme",
   "dependencies": {
     "express": "^4.17.1",
-    "mongoose": "^5.11.13"
+    "mongoose": "^5.11.13",
+    "nodemon": "^2.0.7"
   }
 }
