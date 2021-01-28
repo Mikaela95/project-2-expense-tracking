@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const Expense = require("./models/ExpenseModel");
+const cors = require("cors")
 
 // connecting to mongoDB server - second parameter is an object
 mongoose.connect("mongodb://localhost:27017/expenseTracking", {
@@ -8,9 +9,12 @@ mongoose.connect("mongodb://localhost:27017/expenseTracking", {
   useUnifiedTopology: true,
 });
 
-// invoke the function
+// Initialise app object
 const app = express();
+
+// Add middleware to be able to read and understand json files
 app.use(express.json());
+app.use(cors());
 
 // Import all routers
 const expenseRouter = require("./routes/expenseRoutes");
@@ -23,9 +27,13 @@ app.listen(4000, () => {
 // User hits /expense router, send to expense routes file
 app.use("/expense", expenseRouter);
 
-
-
 // name of the route and the callback function - what do you want the person to do when they get there
+
+// check that server is running
+app.get("/", (req, res) => {
+  res.send("Server is ok");
+});
+
 app.get("/hello", (req, res) => {
   // response
   res.send("Hello world, first get route");
