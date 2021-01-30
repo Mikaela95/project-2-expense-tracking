@@ -117,14 +117,14 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"src/newExpense.js":[function(require,module,exports) {
+})({"src/expenses/newExpense.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
-var form = "\n  <form id=\"form-expense\">\n    <div class=\"form-group\">\n      <label for=\"name\">Expense Type (an option to select category is todo..)</label>\n      <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Enter expense name\" name=\"name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"projectedExpense\">Projected Expense</label>\n      <input type=\"text\" class=\"form-control\" id=\"projected\" placeholder=\"Enter how much you think you'll spend\" name=\"projected\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"actualExpense\">Actually Spent</label>\n      <input type=\"text\" class=\"form-control\" id=\"actual\" placeholder=\"Enter how much you spent\" name=\"projected\">\n    </div>\n    <fieldset class=\"form-group\">\n      <legend class=\"col-form-label\">Not relevant</legend>\n      <div class=\"form-check form-check-inline\">\n        <input class=\"form-check-input\" type=\"radio\" id=\"readyToEatYes\" name =\"readyToEat\" value=\"true\">\n        <label class=\"form-check-label\" for=\"readyToEatYes\">Yes</label>\n      </div>\n      <div class=\"form-check form-check-inline\">\n        <input class=\"form-check-input\" type=\"radio\" id=\"readyToEatNo\" name =\"readyToEat\" value=\"false\">\n        <label class=\"form-check-label\" for=\"readyToEatNo\">No</label>\n      </div>\n    </fieldset>\n    <div class=\"form-group\">\n      <label for=\"categoryId\">Category</label>\n      <select name=\"categoryId\" id=\"categories\">\n        <option value=\"1\"></option>\n      </select>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Create Expense Item</button>\n  </form>\n";
+var form = "\n  <form id=\"form-expense\">\n    <div class=\"form-group\">\n      <label for=\"name\">Expense Type (an option to select category is todo..)</label>\n      <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"Enter expense name\" name=\"name\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"projectedExpense\">Projected Expense</label>\n      <input type=\"text\" class=\"form-control\" id=\"projected\" placeholder=\"Enter how much you think you'll spend\" name=\"projected\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"actualExpense\">Actually Spent</label>\n      <input type=\"text\" class=\"form-control\" id=\"actual\" placeholder=\"Enter how much you spent\" name=\"projected\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Create Expense Item</button>\n  </form>\n";
 
 var newExpense = function newExpense() {
   // return html file to be generated/displayed for the ui
@@ -136,7 +136,7 @@ exports.default = _default;
 },{}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
-var _newExpense = _interopRequireDefault(require("./newExpense"));
+var _newExpense = _interopRequireDefault(require("./expenses/newExpense"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -144,7 +144,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 //const newExpense = require("./newExpense");
 console.log("Health check");
 $("body").prepend((0, _newExpense.default)());
-},{"./newExpense":"src/newExpense.js"}],"../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./expenses/newExpense":"src/expenses/newExpense.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -172,7 +172,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49376" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49697" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -348,5 +348,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../../AppData/Roaming/npm/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/app.js"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","src/app.js"], null)
 //# sourceMappingURL=/app.a6a4d504.js.map

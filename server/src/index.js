@@ -1,63 +1,43 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const Expense = require("./models/ExpenseModel");
-const cors = require("cors")
+const cors = require("cors");
+const session = require("express-session");
 
-// connecting to mongoDB server - second parameter is an object
-mongoose.connect("mongodb://localhost:27017/expenseTracking", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// Import router files
+//const userRouter = require("./routes/userRoutes");
+//const categoryRouter = require("./routes/categoryRoutes");
+const expenseRouter = require("./routes/expenseRoutes");
+
+// Set up connection to DB
+const mongoDB = "mongodb://127.0.0.1/expenseTracking";
+mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Initialise connection - error checking
+let db = mongoose.connection;
+db.on("error", console.error.bind(console, "MongoDB connection error:"));
 
 // Initialise app object
 const app = express();
 
-// Add middleware to be able to read and understand json files
+// Define the port number that your backend will be running on
+const port = 4000;
+
+// Add middleware to work with JSON file types
 app.use(express.json());
 app.use(cors());
+app.use(
+  session({
+    secret: "random secret",
+    resave: false, // future work - Optimistic Concurrency Control
+    saveUninitialized: false,
+  })
+);
 
-// Import all routers
-const expenseRouter = require("./routes/expenseRoutes");
+// Use routers previously defined
+//app.use("/api/users", userRouter);
+//app.use("/api/categories", categoryRouter);
+app.use("/api/expenses", expenseRouter);
 
-// start the server - .listen is a method from express, accepts port number and callback function
-app.listen(4000, () => {
-  console.log("server is running!");
-});
-
-// User hits /expense router, send to expense routes file
-app.use("/expense", expenseRouter);
-
-// name of the route and the callback function - what do you want the person to do when they get there
-
-// check that server is running
-app.get("/", (req, res) => {
-  res.send("Server is ok");
-});
-
-app.get("/hello", (req, res) => {
-  // response
-  res.send("Hello world, first get route");
-});
-
-app.post("/expense", (req, res) => {
-  console.log("req.body:", req.body);
-  Expense.create(req.body)
-    .then((data) => {
-      // data is the entire payload being sent from Postman
-      res.send(data);
-    })
-    .catch((error) => {
-      res.send("Could not create expense :(");
-    });
-});
-
-app.patch("/expense/:id", (req, res) => {
-  console.log("param expense id", req.params.id);
-  Expense.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((error) => {
-      res.send("Could not create expense :(");
-    });
+app.listen(port, () => {
+  console.log(`Expense tracking app is listening at http://localhost:${port}`);
 });

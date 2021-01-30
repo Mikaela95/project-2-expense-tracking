@@ -1,5 +1,5 @@
 // entry point
-import newExpense from "./newExpense";
+import newExpense from "./expenses/newExpense";
 //const newExpense = require("./newExpense");
 console.log("Health check");
 
