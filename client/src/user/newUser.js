@@ -1,13 +1,14 @@
 const form = `
 <main class="form-signin">
   <form id="new-user">
+    <h1>Hello There</h1>
     <div class="form-group">
       <label for="username">Name</label>
       <input type="text" class="form-control" placeholder="Please enter a username" name="username">
     </div>
     <div class="form-group">
       <label for="password">Email address</label>
-      <input type="email" class="form-control" placeholder="Enter email address" name="email">
+      <input type="email" class="form-control" placeholder="Enter your email address" name="email">
     </div>
     <div class="form-group">
       <label for="password">Password</label>
@@ -16,6 +17,13 @@ const form = `
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
 </main>
+`;
+
+const registeredUser = `
+  <main class="form-signin">
+    <h1>Congratulations!</h1>
+    <button class="btn btn-primary">Return to home screen</button>
+  </main>
 `;
 
 // add in more fields
@@ -36,7 +44,8 @@ const newUser = () => {
       contentType: "application/json",
       data: JSON.stringify(formData),
     });
-    console.log("response", response);
+    $("body").empty();
+    $("body").append(registeredUser);
   });
   return form;
 };

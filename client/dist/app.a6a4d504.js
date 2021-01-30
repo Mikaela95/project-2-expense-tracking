@@ -880,7 +880,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var form = "\n<main class=\"form-signin\">\n  <form id=\"new-user\">\n    <div class=\"form-group\">\n      <label for=\"username\">Name</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter a username\" name=\"username\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Email address</label>\n      <input type=\"email\" class=\"form-control\" placeholder=\"Enter email address\" name=\"email\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter a password\" name=\"password\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n</main>\n"; // add in more fields
+var form = "\n<main class=\"form-signin\">\n  <form id=\"new-user\">\n    <h1>Hello There</h1>\n    <div class=\"form-group\">\n      <label for=\"username\">Name</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter a username\" name=\"username\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Email address</label>\n      <input type=\"email\" class=\"form-control\" placeholder=\"Enter your email address\" name=\"email\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter a password\" name=\"password\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n</main>\n";
+var registeredUser = "\n  <main class=\"form-signin\">\n    <h1>Congratulations!</h1>\n    <button class=\"btn btn-primary\">Return to home screen</button>\n  </main>\n"; // add in more fields
 
 var newUser = function newUser() {
   $(document).on("submit", "#new-user", /*#__PURE__*/function () {
@@ -907,9 +908,10 @@ var newUser = function newUser() {
 
             case 6:
               response = _context.sent;
-              console.log("response", response);
+              $("body").empty();
+              $("body").append(registeredUser);
 
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -1036,7 +1038,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62713" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56931" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
