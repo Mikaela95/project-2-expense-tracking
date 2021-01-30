@@ -1,3 +1,5 @@
+import newUser from "./newUser";
+
 const form = `
   <main class="form-signin">
     <form id="login-user">
@@ -13,13 +15,23 @@ const form = `
         </label>
       </div>
       <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
-      <label for="username" class="visually-hidden" id="signup">Don't have an account? <a href="" >Signup here</a></label>
+      <label for="username" class="visually-hidden" id="signup">Don't have an account? <a href="#signup" >Signup here</a></label>
       <p class="mt-5 mb-3 text-muted">&copy; 2017-2021</p>
     </form>
   </main>
 `;
 
 const loginUser = () => {
+  // Sign up option
+  $(document).ready(function () {
+    $("#signup a").click(function () {
+      console.log("You just clicked the signup button");
+      $("body").empty();
+      $("body").append(newUser);
+    });
+  });
+
+  // Sign in option
   $(document).on("submit", "#login-user", async (event) => {
     console.log("event", event);
     event.preventDefault();

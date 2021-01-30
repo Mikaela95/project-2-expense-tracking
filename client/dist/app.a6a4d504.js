@@ -868,64 +868,6 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"src/user/loginUser.js":[function(require,module,exports) {
-"use strict";
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = void 0;
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-var form = "\n  <main class=\"form-signin\">\n    <form id=\"login-user\">\n      <img class=\"mb-4\" type=\"image/png\" src=\"logo_transparent.png\" alt=\"\" width=\"72\" height=\"57\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
-
-var loginUser = function loginUser() {
-  $(document).on("submit", "#login-user", /*#__PURE__*/function () {
-    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
-      var formData, response;
-      return regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              console.log("event", event);
-              event.preventDefault();
-              formData = {
-                username: $("input[name='username']").val(),
-                password: $("input[name='password']").val()
-              };
-              console.log("formData", formData);
-              _context.next = 6;
-              return $.ajax({
-                type: "POST",
-                url: "/api/users/login",
-                contentType: "application/json",
-                data: JSON.stringify(formData)
-              });
-
-            case 6:
-              response = _context.sent;
-              console.log("response: ", response);
-
-            case 8:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }));
-
-    return function (_x) {
-      return _ref.apply(this, arguments);
-    };
-  }());
-  return form;
-};
-
-var _default = loginUser;
-exports.default = _default;
 },{}],"src/user/newUser.js":[function(require,module,exports) {
 "use strict";
 
@@ -938,7 +880,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var form = "\n  <form id=\"new-user\">\n    <div class=\"form-group\">\n      <h1>New User</h1>\n      <label for=\"username\">Username</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter username\" name=\"username\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter password\" name=\"password\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n"; // add in more fields
+var form = "\n<main class=\"form-signin\">\n  <form id=\"new-user\">\n    <div class=\"form-group\">\n      <label for=\"username\">Name</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter a username\" name=\"username\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Email address</label>\n      <input type=\"email\" class=\"form-control\" placeholder=\"Enter email address\" name=\"email\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter a password\" name=\"password\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n</main>\n"; // add in more fields
 
 var newUser = function newUser() {
   $(document).on("submit", "#new-user", /*#__PURE__*/function () {
@@ -984,21 +926,89 @@ var newUser = function newUser() {
 
 var _default = newUser;
 exports.default = _default;
-},{}],"src/app.js":[function(require,module,exports) {
+},{}],"src/user/loginUser.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _newUser = _interopRequireDefault(require("./newUser"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+var form = "\n  <main class=\"form-signin\">\n    <form id=\"login-user\">\n      <img class=\"mb-4\" type=\"image/png\" src=\"logo_transparent.png\" alt=\"\" width=\"72\" height=\"57\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"#signup\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
+
+var loginUser = function loginUser() {
+  // Sign up option
+  $(document).ready(function () {
+    $("#signup a").click(function () {
+      console.log("You just clicked the signup button");
+      $("body").empty();
+      $("body").append(_newUser.default);
+    });
+  }); // Sign in option
+
+  $(document).on("submit", "#login-user", /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(event) {
+      var formData, response;
+      return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              console.log("event", event);
+              event.preventDefault();
+              formData = {
+                username: $("input[name='username']").val(),
+                password: $("input[name='password']").val()
+              };
+              console.log("formData", formData);
+              _context.next = 6;
+              return $.ajax({
+                type: "POST",
+                url: "/api/users/login",
+                contentType: "application/json",
+                data: JSON.stringify(formData)
+              });
+
+            case 6:
+              response = _context.sent;
+              console.log("response: ", response);
+
+            case 8:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }());
+  return form;
+};
+
+var _default = loginUser;
+exports.default = _default;
+},{"./newUser":"src/user/newUser.js"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 require("regenerator-runtime/runtime");
 
 var _loginUser = _interopRequireDefault(require("./user/loginUser"));
 
-var _newUser = _interopRequireDefault(require("./user/newUser"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 // entry point
-// $("body").prepend(loginUser());
 $("body").prepend((0, _loginUser.default)());
-},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","./user/loginUser":"src/user/loginUser.js","./user/newUser":"src/user/newUser.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"regenerator-runtime/runtime":"node_modules/regenerator-runtime/runtime.js","./user/loginUser":"src/user/loginUser.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -1026,7 +1036,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59034" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62713" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
