@@ -880,7 +880,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var form = "\n  <form id=\"login-user\">\n    <div class=\"form-group\">\n      <h1>Login</h1>\n      <label for=\"username\">Username</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter username\" name=\"username\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter password\" name=\"password\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n";
+var form = "\n  <main class=\"form-signin\">\n    <form id=\"login-user\">\n      <img class=\"mb-4\" type=\"image/png\" src=\"logo_transparent.png\" alt=\"\" width=\"72\" height=\"57\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
 
 var loginUser = function loginUser() {
   $(document).on("submit", "#login-user", /*#__PURE__*/function () {
@@ -1026,7 +1026,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62900" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59034" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
