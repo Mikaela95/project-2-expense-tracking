@@ -8,7 +8,7 @@ const app = express();
 app.use(
   "/api",
   createProxyMiddleware({
-    target: "http://localhost:3000/",
+    target: "http://localhost:4000/",
     onProxyReq: (proxyReq) => {
       console.log("ProxyReq:", proxyReq.method, proxyReq.path);
     },

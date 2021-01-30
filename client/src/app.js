@@ -1,6 +1,7 @@
 // entry point
-import newExpense from "./expenses/newExpense";
-//const newExpense = require("./newExpense");
-console.log("Health check");
+import "regenerator-runtime/runtime";
+import loginUser from "./user/loginUser";
+import newUser from "./user/newUser";
 
-$("body").prepend(newExpense());
+// $("body").prepend(loginUser());
+$("body").prepend(loginUser());

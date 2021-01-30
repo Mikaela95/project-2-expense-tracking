@@ -2,6 +2,7 @@
 const express = require("express");
 const bcrypt = require("bcrypt");
 const userModel = require("../models/UserModel");
+const { request } = require("express");
 
 // Create a new router to handle internal routes
 const router = express.Router();
@@ -30,7 +31,27 @@ router.post("/register", (req, res) => {
 
 // Log in an existing user
 router.post("/login", (req, res) => {
-  // log in
+  // Check if user exists
+  userModel.findOne({ username: req.body.username }).then((userData) => {
+    if (userData) {
+      const checkHashPassword = bcrypt.compareSync(
+        req.body.password,
+        userData.password
+      );
+      if (checkHashPassword) {
+        console.log("request.session", request.session);
+        req.session.user = {
+          id: userData._id,
+        };
+        console.log("request.session", req.session);
+        res.send("User has logged in");
+      } else {
+        res.status(401).send("Incorrect password");
+      }
+    } else {
+      res.status(401).send("Username doesn't exist");
+    }
+  });
 });
 
 // Log out a user

@@ -3,8 +3,20 @@ const ExpenseApi = require("../models/ExpenseModel");
 
 const router = express.Router();
 
+// Does a session exist for a user
+router.use((req, res, next) => {
+  console.log("request user router session:", req.session);
+  if (!req.session.user) {
+    res.status(404).send("Please login");
+  } else {
+    next();
+  }
+});
+
+// Health check
 router.get("/_health", (req, res) => {
-  res.send("All is working");
+  console.log("session: ", req.session);
+  res.send("All g");
 });
 
 // Create an expense

@@ -9,7 +9,7 @@ const userRouter = require("./routes/userRoutes");
 const expenseRouter = require("./routes/expenseRoutes");
 
 // Set up connection to DB
-const mongoDB = "mongodb://127.0.0.1/expenseTracking";
+const mongoDB = "mongodb://localhost:27017/expenseTracking";
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 // Initialise connection - error checking
