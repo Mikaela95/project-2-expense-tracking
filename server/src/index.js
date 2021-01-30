@@ -4,7 +4,7 @@ const cors = require("cors");
 const session = require("express-session");
 
 // Import router files
-//const userRouter = require("./routes/userRoutes");
+const userRouter = require("./routes/userRoutes");
 //const categoryRouter = require("./routes/categoryRoutes");
 const expenseRouter = require("./routes/expenseRoutes");
 
@@ -34,7 +34,7 @@ app.use(
 );
 
 // Use routers previously defined
-//app.use("/api/users", userRouter);
+app.use("/api/users", userRouter);
 //app.use("/api/categories", categoryRouter);
 app.use("/api/expenses", expenseRouter);
 
