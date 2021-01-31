@@ -1,3 +1,5 @@
+import './style.css';
+
 const form = `
 <main class="form-signin">
   <form id="new-user">

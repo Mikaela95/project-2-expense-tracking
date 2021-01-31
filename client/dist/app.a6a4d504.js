@@ -868,13 +868,87 @@ try {
   Function("r", "regeneratorRuntime = r")(runtime);
 }
 
-},{}],"src/user/newUser.js":[function(require,module,exports) {
+},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"src/user/style.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/user/newUser.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = void 0;
+
+require("./style.css");
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
@@ -928,7 +1002,33 @@ var newUser = function newUser() {
 
 var _default = newUser;
 exports.default = _default;
-},{}],"src/user/loginUser.js":[function(require,module,exports) {
+},{"./style.css":"src/user/style.css"}],"src/expenses/dashboard.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/expenses/newExpense.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+require("./dashboard.css");
+
+// to-do - dynamically update username
+var name = 'Mikaela';
+var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <a class=\"nav-link\" href=\"#\">Sign out</a>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container-fluid\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n\n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back ".concat(name, "</h1>\n      </div>\n    </main>\n  </div>\n</div>\n\n<script src=\"https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js\" integrity=\"sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE\" crossorigin=\"anonymous\"></script><script src=\"https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js\" integrity=\"sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha\" crossorigin=\"anonymous\"></script>\n\n");
+
+var newExpense = function newExpense() {
+  // return html file to be generated/displayed for the ui
+  return form;
+};
+
+var _default = newExpense;
+exports.default = _default;
+},{"./dashboard.css":"src/expenses/dashboard.css"}],"src/user/loginUser.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -938,13 +1038,17 @@ exports.default = void 0;
 
 var _newUser = _interopRequireDefault(require("./newUser"));
 
+var _newExpense = _interopRequireDefault(require("../expenses/newExpense"));
+
+require("./style.css");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var form = "\n  <main class=\"form-signin\">\n    <form id=\"login-user\">\n      <img class=\"mb-4\" type=\"image/png\" src=\"logo_transparent.png\" alt=\"\" width=\"72\" height=\"57\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"#signup\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
+var form = "\n  <main class=\"form-signin\">\n    <form id=\"login-user\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"#signup\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
 
 var loginUser = function loginUser() {
   // Sign up option
@@ -980,9 +1084,15 @@ var loginUser = function loginUser() {
 
             case 6:
               response = _context.sent;
-              console.log("response: ", response);
+              console.log("response: ", response); //Have an ok message or incorrect username/pwd displayed on the screen
 
-            case 8:
+              if (response != 401) {
+                $("body").empty();
+                $("body").append(_newExpense.default); //console.log(formData.username);
+                //return formData.username;
+              }
+
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -999,7 +1109,7 @@ var loginUser = function loginUser() {
 
 var _default = loginUser;
 exports.default = _default;
-},{"./newUser":"src/user/newUser.js"}],"src/app.js":[function(require,module,exports) {
+},{"./newUser":"src/user/newUser.js","../expenses/newExpense":"src/expenses/newExpense.js","./style.css":"src/user/style.css"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 require("regenerator-runtime/runtime");
@@ -1038,7 +1148,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56931" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52018" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

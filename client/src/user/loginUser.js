@@ -1,9 +1,10 @@
 import newUser from "./newUser";
+import newExpense from "../expenses/newExpense";
+import "./style.css";
 
 const form = `
   <main class="form-signin">
     <form id="login-user">
-      <img class="mb-4" type="image/png" src="logo_transparent.png" alt="" width="72" height="57">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       <label for="username" class="visually-hidden">Username</label>
       <input type="text" id="username" name="username" class="form-control" placeholder="Username" required autofocus>
@@ -48,6 +49,13 @@ const loginUser = () => {
       data: JSON.stringify(formData),
     });
     console.log("response: ", response);
+    //Have an ok message or incorrect username/pwd displayed on the screen
+    if (response != 401) {
+      $("body").empty();
+      $("body").append(newExpense);
+      //console.log(formData.username);
+      //return formData.username;
+    }
   });
   return form;
 };

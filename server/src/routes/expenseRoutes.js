@@ -32,8 +32,33 @@ router.post("/new-expense", (req, res) => {
   res.send("Expense item added to DB");
 });
 
-// Update an expense
+// Update an expense - need to test
+router.patch("/update-expense/:id", (req, res) => {
+  ExpenseApi.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+    upsert: true,
+  })
+    .then((data) => {
+      console.log("Update successful");
+      res.send(data);
+    })
+    .catch(() => {
+      console.log("Something went wrong!");
+      res.status(404).send("Expense item not found");
+    });
+});
 
 // Delete an expense
+router.patch("/delete-expense/:id", (req, res) => {
+  ExpenseApi.findByIdAndDelete(req.params.id)
+    .then((data) => {
+      console.log("Delete successful");
+      res.send(data);
+    })
+    .catch(() => {
+      console.log("Something went wrong!");
+      res.status(404).send("Expense item not found");
+    });
+});
 
 module.exports = router;
