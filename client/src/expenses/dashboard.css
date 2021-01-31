@@ -109,3 +109,11 @@ body {
 #expense-form{
   margin-top: 5rem;
 }
+
+.alert{
+  position: absolute;
+  text-align: center;
+  top: 3rem;
+  width: 100%;
+  z-index: 100;
+}

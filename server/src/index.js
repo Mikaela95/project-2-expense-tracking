@@ -5,7 +5,7 @@ const session = require("express-session");
 
 // Import router files
 const userRouter = require("./routes/userRoutes");
-//const categoryRouter = require("./routes/categoryRoutes");
+const categoryRouter = require("./routes/categoryRoutes");
 const expenseRouter = require("./routes/expenseRoutes");
 
 // Set up connection to DB
@@ -35,7 +35,7 @@ app.use(
 
 // Use routers previously defined
 app.use("/api/users", userRouter);
-//app.use("/api/categories", categoryRouter);
+app.use("/api/categories", categoryRouter);
 app.use("/api/expenses", expenseRouter);
 
 app.listen(port, () => {

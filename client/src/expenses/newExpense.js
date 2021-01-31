@@ -128,22 +128,22 @@ const form = `
 
     <div class="container">
     <h1 class="display-5">New Expense</h1>
-      <form class="row g-3" id="expense-form">
+    <form class="row g-3" id="expense-form">
       <div class="col-md-6 form-group">
         <label for="categoryId">Category</label>
         <select name="categoryId" id="categories"></select>
       </div>
       <div class="col-md-6">
-        <label for="inputCity" class="form-label">Expense name</label>
-        <input type="text" class="form-control" id="inputCity" placeholder="name">
+        <label for="name" class="form-label">Expense name</label>
+        <input type="text" class="form-control" id="name" placeholder="name">
       </div>
       <div class="col-6">
-        <label for="inputAddress" class="form-label">Projected cost</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="$">
+        <label for="projectedCost" class="form-label">Projected cost</label>
+        <input type="text" class="form-control" id="projectedCost" placeholder="$">
       </div>
       <div class="col-6">
-        <label for="inputAddress2" class="form-label">Actual cost</label>
-        <input type="text" class="form-control" id="inputAddress2" placeholder="$">
+        <label for="actualCost" class="form-label">Actual cost</label>
+        <input type="text" class="form-control" id="actualCost" placeholder="$">
       </div>
       <div class="col-12">
         <button type="submit" class="btn btn-primary">Submit</button>
@@ -155,7 +155,52 @@ const form = `
 `;
 
 const newExpense = () => {
-  // return html file to be generated/displayed for the ui
+  const categoryResponse = $.ajax({
+    type: "GET",
+    url: "/api/categories/all-categories",
+  }).done((expenseCategories) => {
+    console.log("expenseCategories", expenseCategories);
+    let optionsHtml = "";
+    expenseCategories.forEach((expenseElement) => {
+      console.log("expenseElement", expenseElement);
+      optionsHtml += `<option value=${expenseElement._id}>${expenseElement.name}</option>`;
+      console.log("optionsHtml", optionsHtml);
+    });
+    console.log("optionsHtml", optionsHtml);
+    $("#categories").append(optionsHtml);
+  });
+  // Handle submit
+  $(document).on("submit", "#expense-form", async (e) => {
+    e.preventDefault();
+    const requestBody = {
+      name: $("#name").val(),
+      projectedExpense: $("#projectedCost").val(),
+      actualExpense: $("#actualCost").val(),
+      categoryId: $("#categories").val(),
+    };
+    console.log("requestBody", requestBody);
+
+    // Send to DB through a POST request
+    const response = await $.ajax({
+      type: "POST",
+      url: "/api/expenses/new-expense",
+      contentType: "application/json",
+      data: JSON.stringify(requestBody),
+    });
+    if (response != 401) {
+      const message = `
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>Successfully added expense item</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      `;
+      $("body").append(message);
+      // Need to reset form
+    }
+    console.log(`This is the response I get back ${response}`);
+  });
   return form;
 };
 
