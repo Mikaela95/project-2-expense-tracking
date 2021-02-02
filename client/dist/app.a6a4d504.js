@@ -954,8 +954,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var form = "\n<main class=\"form-signin\">\n  <form id=\"new-user\">\n    <h1>Hello There</h1>\n    <div class=\"form-group\">\n      <label for=\"username\">Name</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter a username\" name=\"username\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Email address</label>\n      <input type=\"email\" class=\"form-control\" placeholder=\"Enter your email address\" name=\"email\">\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter a password\" name=\"password\">\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n</main>\n";
-var registeredUser = "\n  <main class=\"form-signin\">\n    <h1>Congratulations!</h1>\n    <button class=\"btn btn-primary\">Return to home screen</button>\n  </main>\n"; // add in more fields
+var form = "\n<main class=\"form-signin\" id=\"newUser\">\n  <form id=\"new-user\">\n    <h1>Hello There</h1>\n    <div class=\"form-group\">\n      <label for=\"username\">Name</label>\n      <input type=\"text\" class=\"form-control\" placeholder=\"Please enter a username\" name=\"username\" autofocus required>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Email address</label>\n      <input type=\"email\" class=\"form-control\" placeholder=\"Enter your email address\" name=\"email\" required>\n    </div>\n    <div class=\"form-group\">\n      <label for=\"password\">Password</label>\n      <input type=\"password\" class=\"form-control\" placeholder=\"Please enter a password\" name=\"password\" required>\n    </div>\n    <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n  </form>\n</main>\n";
+var registeredUser = "\n  <main class=\"form-signin\" id=\"home\">\n    <h1>Congratulations!</h1>\n    <button class=\"btn btn-primary\">You can now login</button>\n  </main>\n";
 
 var newUser = function newUser() {
   $(document).on("submit", "#new-user", /*#__PURE__*/function () {
@@ -995,6 +995,26 @@ var newUser = function newUser() {
 
     return function (_x) {
       return _ref.apply(this, arguments);
+    };
+  }());
+  $(document).on("click", "#home", /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(e) {
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              location.reload();
+
+            case 1:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
     };
   }());
   return form;
@@ -19160,7 +19180,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // to-do - dynamically update username
 var name = "Mikaela";
-var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <a class=\"nav-link\" href=\"#\">Sign out</a>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    \n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back ".concat(name, "</h1>\n      </div>\n    </main>\n\n    <div class=\"container\">\n    <h1 class=\"display-5\">New Expense</h1>\n    <div class=\"col-md-6 form-group\">\n        <label for=\"expenseId\">Expense Id</label>\n        <input type=\"text\" class=\"form-control\" id=\"expenseId\" placeholder=\"Enter expense Id\" name=\"expenseId\">\n    </div>\n    <form class=\"row g-3\" id=\"expense-form\">\n      <div class=\"col-md-6 form-group\">\n        <label for=\"categoryId\">Category</label>\n        <select name=\"categoryId\" id=\"categories\"></select>\n      </div>\n      <div class=\"col-md-6\">\n        <label for=\"name\" class=\"form-label\">Expense name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"name\" required>\n      </div>\n      <div class=\"col-6\">\n        <label for=\"projectedCost\" class=\"form-label\">Projected cost</label>\n        <input type=\"text\" class=\"form-control\" id=\"projectedCost\" placeholder=\"$\" required>\n      </div>\n      <div class=\"col-6\">\n        <label for=\"actualCost\" class=\"form-label\">Actual cost</label>\n        <input type=\"text\" class=\"form-control\" id=\"actualCost\" placeholder=\"$\" required>\n      </div>\n      <div class=\"col-6\">\n        <button type=\"button\" class=\"btn btn-primary\" id=\"create\">Create</button>\n      </div>\n      <div class=\"col-6\">\n        <button type=\"button\" class=\"btn btn-primary\" id=\"update\">Update</button>\n      </div>\n      <div class=\"col-6\">\n        <button type=\"submit\" class=\"btn btn-danger\" id=\"delete\">Delete</button>\n      </div> \n    </form>\n  </div>\n</div>\n");
+var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <button type=\"button\" class=\"btn btn-secondary\" id=\"signout\">Sign out</button>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    \n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back ".concat(name, "</h1>\n      </div>\n    </main>\n\n    <div class=\"container\">\n    <h1 class=\"display-5\">Expenses</h1>\n    <form class=\"form-row\" id=\"expense-form\">\n      <div class=\"col-md-6 form-group\">\n          <label for=\"expenseId\">Expense Id</label>\n          <input type=\"text\" class=\"form-control\" id=\"expenseId\" placeholder=\"Enter expense Id\" name=\"expenseId\">\n      </div>\n      <div class=\"form-group col-md-6\">\n        <label for=\"categoryId\">Category</label>\n        <select class=\"form-control\" name=\"categoryId\" id=\"categories\"></select>\n      </div>\n      <div class=\"form-row\">\n        <div class=\"col-md-6\">\n          <label for=\"name\" class=\"form-label\">Expense name</label>\n          <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"name\" required>\n        </div>\n        <div class=\"col-3\">\n          <label for=\"projectedCost\" class=\"form-label\">Projected cost</label>\n          <input type=\"text\" class=\"form-control\" id=\"projectedCost\" placeholder=\"$\" required>\n        </div>\n        <div class=\"col-3\">\n          <label for=\"actualCost\" class=\"form-label\">Actual cost</label>\n          <input type=\"text\" class=\"form-control\" id=\"actualCost\" placeholder=\"$\" required>\n        </div>\n      \n        <div class=\"form-group row\" id=\"all-buttons\">\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-primary\" id=\"create\">Create</button>\n          </div>\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-primary\" id=\"update\">Update</button>\n          </div>\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-danger\" id=\"delete\">Delete</button>\n          </div> \n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n");
 
 var expenseForm = function expenseForm() {
   var categoryResponse = $.ajax({
@@ -19181,7 +19201,8 @@ var expenseForm = function expenseForm() {
 
   $(document).on("click", "#create", /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
-      var requestBody, response, message;
+      var requestBody, response, message, _message;
+
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -19208,7 +19229,11 @@ var expenseForm = function expenseForm() {
 
               if (response != 401) {
                 message = "\n      <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n        <strong>Successfully added expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
-                $("body").append(message); // Need to reset form
+                $("body").append(message);
+                document.getElementById("expense-form").reset();
+              } else {
+                _message = "\n      <div class=\"alert alert-warning alert-dismissible fade show\" role=\"alert\">\n        <strong>Unable to add expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
+                $("body").append(_message);
               }
 
               console.log("This is the response I get back ".concat(response));
@@ -19251,10 +19276,23 @@ var expenseForm = function expenseForm() {
             case 4:
               response = _context2.sent;
 
-              if (response != 401) {
+              if (response != 404) {
                 message = "\n      <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n        <strong>Successfully updated expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
                 $("body").append(message);
+                document.getElementById("expense-form").reset();
               }
+              /* else {
+              const message = `
+              <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>Unable to add expense item</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              `;
+              $("body").append(message);
+              } */
+
 
               console.log("Successfully updated expense item");
 
@@ -19299,6 +19337,7 @@ var expenseForm = function expenseForm() {
               if (response != 401) {
                 message = "\n      <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n        <strong>Successfully deleted expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
                 $("body").append(message);
+                document.getElementById("expense-form").reset();
               }
 
               console.log("Successfully deleted expense item");
@@ -19313,6 +19352,26 @@ var expenseForm = function expenseForm() {
 
     return function (_x3) {
       return _ref3.apply(this, arguments);
+    };
+  }());
+  $(document).on("click", "#signout", /*#__PURE__*/function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(e) {
+      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              location.reload();
+
+            case 1:
+            case "end":
+              return _context4.stop();
+          }
+        }
+      }, _callee4);
+    }));
+
+    return function (_x4) {
+      return _ref4.apply(this, arguments);
     };
   }());
   return form;
@@ -19340,7 +19399,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-var form = "\n  <main class=\"form-signin\">\n    <form id=\"login-user\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"#signup\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
+var form = "\n  <main class=\"form-signin\" id=\"login\">\n    <form id=\"login-user\">\n      <h1 class=\"h3 mb-3 fw-normal\">Please sign in</h1>\n      <label for=\"username\" class=\"visually-hidden\">Username</label>\n      <input type=\"text\" id=\"username\" name=\"username\" class=\"form-control\" placeholder=\"Username\" required autofocus>\n      <label for=\"inputPassword\" class=\"visually-hidden\">Password</label>\n      <input type=\"password\" id=\"inputPassword\" name=\"password\" class=\"form-control\" placeholder=\"Password\" required>\n      <div class=\"checkbox mb-3\">\n        <label>\n          <input type=\"checkbox\" value=\"remember-me\"> Remember me\n        </label>\n      </div>\n      <button class=\"w-100 btn btn-lg btn-primary\" type=\"submit\">Login</button>\n      <label for=\"username\" class=\"visually-hidden\" id=\"signup\">Don't have an account? <a href=\"#signup\" >Signup here</a></label>\n      <p class=\"mt-5 mb-3 text-muted\">&copy; 2017-2021</p>\n    </form>\n  </main>\n";
 
 var loginUser = function loginUser() {
   // Sign up option

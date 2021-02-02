@@ -13,7 +13,7 @@ const form = `
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
-      <a class="nav-link" href="#">Sign out</a>
+      <button type="button" class="btn btn-secondary" id="signout">Sign out</button>
     </li>
   </ul>
 </header>
@@ -127,37 +127,42 @@ const form = `
     </main>
 
     <div class="container">
-    <h1 class="display-5">New Expense</h1>
-    <div class="col-md-6 form-group">
-        <label for="expenseId">Expense Id</label>
-        <input type="text" class="form-control" id="expenseId" placeholder="Enter expense Id" name="expenseId">
-    </div>
-    <form class="row g-3" id="expense-form">
+    <h1 class="display-5">Expenses</h1>
+    <form class="form-row" id="expense-form">
       <div class="col-md-6 form-group">
+          <label for="expenseId">Expense Id</label>
+          <input type="text" class="form-control" id="expenseId" placeholder="Enter expense Id" name="expenseId">
+      </div>
+      <div class="form-group col-md-6">
         <label for="categoryId">Category</label>
-        <select name="categoryId" id="categories"></select>
+        <select class="form-control" name="categoryId" id="categories"></select>
       </div>
-      <div class="col-md-6">
-        <label for="name" class="form-label">Expense name</label>
-        <input type="text" class="form-control" id="name" placeholder="name" required>
+      <div class="form-row">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Expense name</label>
+          <input type="text" class="form-control" id="name" placeholder="name" required>
+        </div>
+        <div class="col-3">
+          <label for="projectedCost" class="form-label">Projected cost</label>
+          <input type="text" class="form-control" id="projectedCost" placeholder="$" required>
+        </div>
+        <div class="col-3">
+          <label for="actualCost" class="form-label">Actual cost</label>
+          <input type="text" class="form-control" id="actualCost" placeholder="$" required>
+        </div>
+      
+        <div class="form-group row" id="all-buttons">
+          <div class="col-4">
+            <button type="button" class="btn btn-primary" id="create">Create</button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-primary" id="update">Update</button>
+          </div>
+          <div class="col-4">
+            <button type="button" class="btn btn-danger" id="delete">Delete</button>
+          </div> 
+        </div>
       </div>
-      <div class="col-6">
-        <label for="projectedCost" class="form-label">Projected cost</label>
-        <input type="text" class="form-control" id="projectedCost" placeholder="$" required>
-      </div>
-      <div class="col-6">
-        <label for="actualCost" class="form-label">Actual cost</label>
-        <input type="text" class="form-control" id="actualCost" placeholder="$" required>
-      </div>
-      <div class="col-6">
-        <button type="button" class="btn btn-primary" id="create">Create</button>
-      </div>
-      <div class="col-6">
-        <button type="button" class="btn btn-primary" id="update">Update</button>
-      </div>
-      <div class="col-6">
-        <button type="submit" class="btn btn-danger" id="delete">Delete</button>
-      </div> 
     </form>
   </div>
 </div>
@@ -207,10 +212,21 @@ const expenseForm = () => {
       </div>
       `;
       $("body").append(message);
-      // Need to reset form
+      document.getElementById("expense-form").reset();
+    } else {
+      const message = `
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Unable to add expense item</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      `;
+      $("body").append(message);
     }
     console.log(`This is the response I get back ${response}`);
   });
+
 
   // Update form entry
   $(document).on("click", "#update", async (e) => {
@@ -227,7 +243,7 @@ const expenseForm = () => {
       contentType: "application/json",
       data: JSON.stringify(requestBody),
     });
-    if (response != 401) {
+    if (response != 404) {
       const message = `
       <div class="alert alert-success alert-dismissible fade show" role="alert">
         <strong>Successfully updated expense item</strong>
@@ -237,7 +253,18 @@ const expenseForm = () => {
       </div>
       `;
       $("body").append(message);
-    }
+      document.getElementById("expense-form").reset();
+    } /* else {
+      const message = `
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Unable to add expense item</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      `;
+      $("body").append(message);
+    } */
     console.log(`Successfully updated expense item`);
   });
 
@@ -266,9 +293,15 @@ const expenseForm = () => {
       </div>
       `;
       $("body").append(message);
+      document.getElementById("expense-form").reset();
     }
     console.log(`Successfully deleted expense item`);
   });
+
+  $(document).on("click", "#signout", async (e) => {
+    location.reload();
+  });
+
   return form;
 };
 

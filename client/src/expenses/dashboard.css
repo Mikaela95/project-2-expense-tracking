@@ -117,3 +117,7 @@ body {
   width: 100%;
   z-index: 100;
 }
+
+#all-buttons{
+  margin-top: 2.5rem;
+}

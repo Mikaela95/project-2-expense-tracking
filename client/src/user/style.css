@@ -3,6 +3,22 @@ body {
   height: 100%;
 }
 
+#login{
+  display: flex;
+  align-items: center;
+  padding-top: 10rem;
+  padding-bottom: 40px;
+  /* background-color: #7CB9E8; */
+}
+
+#newUser{
+  padding-top: 10rem;
+}
+
+#home{
+  padding-top: 10rem;
+}
+
 body {
   display: flex;
   align-items: center;

@@ -3,7 +3,7 @@ import expenseForm from "../expenses/expenseForm";
 import "./style.css";
 
 const form = `
-  <main class="form-signin">
+  <main class="form-signin" id="login">
     <form id="login-user">
       <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
       <label for="username" class="visually-hidden">Username</label>

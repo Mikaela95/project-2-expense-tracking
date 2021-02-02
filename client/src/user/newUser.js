@@ -1,20 +1,20 @@
 import './style.css';
 
 const form = `
-<main class="form-signin">
+<main class="form-signin" id="newUser">
   <form id="new-user">
     <h1>Hello There</h1>
     <div class="form-group">
       <label for="username">Name</label>
-      <input type="text" class="form-control" placeholder="Please enter a username" name="username">
+      <input type="text" class="form-control" placeholder="Please enter a username" name="username" autofocus required>
     </div>
     <div class="form-group">
       <label for="password">Email address</label>
-      <input type="email" class="form-control" placeholder="Enter your email address" name="email">
+      <input type="email" class="form-control" placeholder="Enter your email address" name="email" required>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" class="form-control" placeholder="Please enter a password" name="password">
+      <input type="password" class="form-control" placeholder="Please enter a password" name="password" required>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
@@ -22,13 +22,11 @@ const form = `
 `;
 
 const registeredUser = `
-  <main class="form-signin">
+  <main class="form-signin" id="home">
     <h1>Congratulations!</h1>
-    <button class="btn btn-primary">Return to home screen</button>
+    <button class="btn btn-primary">You can now login</button>
   </main>
 `;
-
-// add in more fields
 
 const newUser = () => {
   $(document).on("submit", "#new-user", async (event) => {
@@ -49,6 +47,11 @@ const newUser = () => {
     $("body").empty();
     $("body").append(registeredUser);
   });
+
+  $(document).on("click", "#home", async (e) => {
+    location.reload();
+  });
+
   return form;
 };
 
