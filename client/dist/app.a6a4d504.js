@@ -19174,13 +19174,15 @@ require("./dashboard.css");
 
 require("bootstrap/dist/js/bootstrap.bundle");
 
+require("../user/loginUser");
+
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-// to-do - dynamically update username
-//let name = formData;
-var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <button type=\"button\" class=\"btn btn-secondary\" id=\"signout\">Sign out</button>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    \n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back</h1>\n      </div>\n    </main>\n\n    <div class=\"container\">\n    <h1 class=\"display-5\">Expenses</h1>\n    <form class=\"form-row\" id=\"expense-form\">\n      <div class=\"col-md-6 form-group\">\n          <label for=\"expenseId\">Expense Id</label>\n          <input type=\"text\" class=\"form-control\" id=\"expenseId\" placeholder=\"Enter expense Id\" name=\"expenseId\">\n      </div>\n      <div class=\"form-group col-md-6\">\n        <label for=\"categoryId\">Category</label>\n        <select class=\"form-control\" name=\"categoryId\" id=\"categories\"></select>\n      </div>\n      <div class=\"form-row\">\n        <div class=\"col-md-6\">\n          <label for=\"name\" class=\"form-label\">Expense name</label>\n          <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"name\" required>\n        </div>\n        <div class=\"col-3\">\n          <label for=\"projectedCost\" class=\"form-label\">Projected cost</label>\n          <input type=\"text\" class=\"form-control\" id=\"projectedCost\" placeholder=\"$\" required>\n        </div>\n        <div class=\"col-3\">\n          <label for=\"actualCost\" class=\"form-label\">Actual cost</label>\n          <input type=\"text\" class=\"form-control\" id=\"actualCost\" placeholder=\"$\" required>\n        </div>\n      \n        <div class=\"form-group row\" id=\"all-buttons\">\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-primary\" id=\"create\">Create</button>\n          </div>\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-primary\" id=\"update\">Update</button>\n          </div>\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-danger\" id=\"delete\">Delete</button>\n          </div> \n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n";
+var name = localStorage.getItem('username');
+var usernameId = localStorage.getItem('userId');
+var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <button type=\"button\" class=\"btn btn-secondary\" id=\"signout\">Sign out</button>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    \n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back ".concat(name, "</h1>\n      </div>\n    </main>\n\n    <div class=\"container\">\n    <h1 class=\"display-5\">Expenses</h1>\n    <form class=\"form-row\" id=\"expense-form\">\n      <div class=\"col-md-6 form-group\">\n          <label for=\"expenseId\">Expense Id</label>\n          <input type=\"text\" class=\"form-control\" id=\"expenseId\" placeholder=\"Enter expense Id\" name=\"expenseId\">\n      </div>\n      <div class=\"form-group col-md-6\">\n        <label for=\"categoryId\">Category</label>\n        <select class=\"form-control\" name=\"categoryId\" id=\"categories\"></select>\n      </div>\n      <div class=\"form-row\">\n        <div class=\"col-md-6\">\n          <label for=\"name\" class=\"form-label\">Expense name</label>\n          <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"name\" required>\n        </div>\n        <div class=\"col-3\">\n          <label for=\"projectedCost\" class=\"form-label\">Projected cost</label>\n          <input type=\"text\" class=\"form-control\" id=\"projectedCost\" placeholder=\"$\" required>\n        </div>\n        <div class=\"col-3\">\n          <label for=\"actualCost\" class=\"form-label\">Actual cost</label>\n          <input type=\"text\" class=\"form-control\" id=\"actualCost\" placeholder=\"$\" required>\n        </div>\n      \n        <div class=\"form-group row\" id=\"all-buttons\">\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-primary\" id=\"create\">Create</button>\n          </div>\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-primary\" id=\"update\">Update</button>\n          </div>\n          <div class=\"col-4\">\n            <button type=\"button\" class=\"btn btn-danger\" id=\"delete\">Delete</button>\n          </div> \n        </div>\n      </div>\n    </form>\n  </div>\n</div>\n");
 
 var expenseForm = function expenseForm() {
   var categoryResponse = $.ajax({
@@ -19212,11 +19214,13 @@ var expenseForm = function expenseForm() {
                 name: $("#name").val(),
                 projectedExpense: $("#projectedCost").val(),
                 actualExpense: $("#actualCost").val(),
-                categoryId: $("#categories").val()
+                categoryId: $("#categories").val(),
+                userId: usernameId
               };
-              console.log("requestBody", requestBody); // Send to DB through a POST request
+              console.log("requestBody", requestBody);
+              console.log("This should be the username ID!: ", usernameId); // Send to DB through a POST request
 
-              _context.next = 5;
+              _context.next = 6;
               return $.ajax({
                 type: "POST",
                 url: "/api/expenses/new-expense",
@@ -19224,7 +19228,7 @@ var expenseForm = function expenseForm() {
                 data: JSON.stringify(requestBody)
               });
 
-            case 5:
+            case 6:
               response = _context.sent;
 
               if (response != 401) {
@@ -19238,7 +19242,7 @@ var expenseForm = function expenseForm() {
 
               console.log("This is the response I get back ".concat(response));
 
-            case 8:
+            case 9:
             case "end":
               return _context.stop();
           }
@@ -19263,7 +19267,8 @@ var expenseForm = function expenseForm() {
                 name: $("#name").val(),
                 projectedExpense: $("#projectedCost").val(),
                 actualExpense: $("#actualCost").val(),
-                categoryId: $("#categories").val()
+                categoryId: $("#categories").val(),
+                userId: usernameId
               };
               _context2.next = 4;
               return $.ajax({
@@ -19321,7 +19326,8 @@ var expenseForm = function expenseForm() {
                 name: $("#name").val(),
                 projectedExpense: $("#projectedCost").val(),
                 actualExpense: $("#actualCost").val(),
-                categoryId: $("#categories").val()
+                categoryId: $("#categories").val(),
+                userId: usernameId
               };
               _context3.next = 4;
               return $.ajax({
@@ -19379,7 +19385,7 @@ var expenseForm = function expenseForm() {
 
 var _default = expenseForm;
 exports.default = _default;
-},{"./dashboard.css":"src/expenses/dashboard.css","bootstrap/dist/js/bootstrap.bundle":"node_modules/bootstrap/dist/js/bootstrap.bundle.js"}],"src/user/loginUser.js":[function(require,module,exports) {
+},{"./dashboard.css":"src/expenses/dashboard.css","bootstrap/dist/js/bootstrap.bundle":"node_modules/bootstrap/dist/js/bootstrap.bundle.js","../user/loginUser":"src/user/loginUser.js"}],"src/user/loginUser.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19431,22 +19437,21 @@ var loginUser = function loginUser() {
                 url: "/api/users/login",
                 contentType: "application/json",
                 data: JSON.stringify(formData)
+              }).done(function () {
+                localStorage.setItem("username", formData.username);
               });
 
             case 6:
               response = _context.sent;
-              console.log("response: ", response); //Have an ok message or incorrect username/pwd displayed on the screen
+              localStorage.setItem("userId", response.id);
+              console.log("this sit he resposne: ", response.id); //Have an ok message or incorrect username/pwd displayed on the screen
 
-              if (!(response != 401)) {
-                _context.next = 12;
-                break;
+              if (response != 401) {
+                $("body").empty();
+                $("body").append(_expenseForm.default);
               }
 
-              $("body").empty();
-              $("body").append(_expenseForm.default);
-              return _context.abrupt("return", formData.username);
-
-            case 12:
+            case 10:
             case "end":
               return _context.stop();
           }
@@ -19504,7 +19509,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51878" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58088" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

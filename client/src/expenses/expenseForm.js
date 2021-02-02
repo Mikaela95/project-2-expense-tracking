@@ -1,8 +1,9 @@
 import "./dashboard.css";
 import "bootstrap/dist/js/bootstrap.bundle";
+import "../user/loginUser";
 
-// to-do - dynamically update username
-//let name = formData;
+let name = localStorage.getItem('username');
+let usernameId = localStorage.getItem('userId');
 
 const form = `
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -122,7 +123,7 @@ const form = `
     
     <main class="col-md-12">
       <div class="border-bottom">
-        <h1 class="h2">Welcome back</h1>
+        <h1 class="h2">Welcome back ${name}</h1>
       </div>
     </main>
 
@@ -184,6 +185,7 @@ const expenseForm = () => {
     $("#categories").append(optionsHtml);
     $("#categories-update").append(optionsHtml);
   });
+
   // Create an expense item
   $(document).on("click", "#create", async (e) => {
     e.preventDefault();
@@ -192,9 +194,10 @@ const expenseForm = () => {
       projectedExpense: $("#projectedCost").val(),
       actualExpense: $("#actualCost").val(),
       categoryId: $("#categories").val(),
+      userId: usernameId,
     };
     console.log("requestBody", requestBody);
-
+    console.log("This should be the username ID!: ", usernameId);
     // Send to DB through a POST request
     const response = await $.ajax({
       type: "POST",
@@ -235,6 +238,7 @@ const expenseForm = () => {
       projectedExpense: $("#projectedCost").val(),
       actualExpense: $("#actualCost").val(),
       categoryId: $("#categories").val(),
+      userId: usernameId,
     };
     const response = await $.ajax({
       type: "PATCH",
@@ -275,6 +279,7 @@ const expenseForm = () => {
       projectedExpense: $("#projectedCost").val(),
       actualExpense: $("#actualCost").val(),
       categoryId: $("#categories").val(),
+      userId: usernameId,
     };
     const response = await $.ajax({
       type: "DELETE",

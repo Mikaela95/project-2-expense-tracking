@@ -44,7 +44,7 @@ router.post("/login", (req, res) => {
           id: userData._id,
         };
         console.log("request.session", req.session);
-        res.send("User has logged in");
+        res.send({id: userData._id});
       } else {
         res.status(401).send("Incorrect password");
       }

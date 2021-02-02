@@ -47,15 +47,16 @@ const loginUser = () => {
       url: "/api/users/login",
       contentType: "application/json",
       data: JSON.stringify(formData),
+    }).done(() => {
+      localStorage.setItem("username", formData.username);
     });
-    console.log("response: ", response);
+    localStorage.setItem("userId", response.id);
+    console.log("this sit he resposne: ", response.id)
     //Have an ok message or incorrect username/pwd displayed on the screen
     if (response != 401) {
       $("body").empty();
       $("body").append(expenseForm);
-      return formData.username;
-      //return formData.username;
-    } 
+    }
   });
   return form;
 };
