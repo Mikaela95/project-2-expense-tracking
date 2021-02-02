@@ -1,5 +1,5 @@
 import newUser from "./newUser";
-import newExpense from "../expenses/newExpense";
+import expenseForm from "../expenses/expenseForm";
 import "./style.css";
 
 const form = `
@@ -52,9 +52,7 @@ const loginUser = () => {
     //Have an ok message or incorrect username/pwd displayed on the screen
     if (response != 401) {
       $("body").empty();
-      $("body").append(newExpense);
-      //console.log(formData.username);
-      //return formData.username;
+      $("body").append(expenseForm);
     }
   });
   return form;

@@ -19142,7 +19142,7 @@ var global = arguments[3];
 })));
 
 
-},{"jquery":"node_modules/jquery/dist/jquery.js"}],"src/expenses/newExpense.js":[function(require,module,exports) {
+},{"jquery":"node_modules/jquery/dist/jquery.js"}],"src/expenses/expenseForm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -19160,9 +19160,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 // to-do - dynamically update username
 var name = "Mikaela";
-var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <a class=\"nav-link\" href=\"#\">Sign out</a>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    \n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back ".concat(name, "</h1>\n      </div>\n    </main>\n\n    <div class=\"container\">\n    <h1 class=\"display-5\">New Expense</h1>\n    <form class=\"row g-3\" id=\"expense-form\">\n      <div class=\"col-md-6 form-group\">\n        <label for=\"categoryId\">Category</label>\n        <select name=\"categoryId\" id=\"categories\"></select>\n      </div>\n      <div class=\"col-md-6\">\n        <label for=\"name\" class=\"form-label\">Expense name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"name\">\n      </div>\n      <div class=\"col-6\">\n        <label for=\"projectedCost\" class=\"form-label\">Projected cost</label>\n        <input type=\"text\" class=\"form-control\" id=\"projectedCost\" placeholder=\"$\">\n      </div>\n      <div class=\"col-6\">\n        <label for=\"actualCost\" class=\"form-label\">Actual cost</label>\n        <input type=\"text\" class=\"form-control\" id=\"actualCost\" placeholder=\"$\">\n      </div>\n      <div class=\"col-12\">\n        <button type=\"submit\" class=\"btn btn-primary\">Submit</button>\n      </div>\n    </form>\n    </div>\n  </div>\n</div>\n");
+var form = "\n<header class=\"navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow\">\n  <a class=\"navbar-brand col-md-3 col-lg-2 me-0 px-3\" href=\"#\">Contemporary Finance</a>\n  <button class=\"navbar-toggler position-absolute d-md-none collapsed\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#sidebarMenu\" aria-controls=\"sidebarMenu\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n  <input class=\"form-control form-control-dark w-100\" type=\"text\" placeholder=\"Search\" aria-label=\"Search\">\n  <ul class=\"navbar-nav px-3\">\n    <li class=\"nav-item text-nowrap\">\n      <a class=\"nav-link\" href=\"#\">Sign out</a>\n    </li>\n  </ul>\n</header>\n\n<div class=\"container\">\n  <div class=\"row\">\n    <nav id=\"sidebarMenu\" class=\"col-md-3 col-lg-2 d-md-block bg-light sidebar collapse\">\n      <div class=\"position-sticky pt-3\">\n        <ul class=\"nav flex-column\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link active\" aria-current=\"page\" href=\"#\">\n              <span data-feather=\"home\"></span>\n              Dashboard\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file\"></span>\n              Housing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"users\"></span>\n              Transportation\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"bar-chart-2\"></span>\n              Food\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Utilities\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Clothing\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Medical/Healthcare\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Insurance\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Household Items/Supplies\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Debt\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"layers\"></span>\n              Personal\n            </a>\n          </li>\n        </ul>\n\n        <h6 class=\"sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted\">\n          <span>Saved reports</span>\n          <a class=\"link-secondary\" href=\"#\" aria-label=\"Add a new report\">\n            <span data-feather=\"plus-circle\"></span>\n          </a>\n        </h6>\n        <ul class=\"nav flex-column mb-2\">\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Current month\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              Last quarter\n            </a>\n          </li>\n          <li class=\"nav-item\">\n            <a class=\"nav-link\" href=\"#\">\n              <span data-feather=\"file-text\"></span>\n              By year\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>\n    \n    <main class=\"col-md-12\">\n      <div class=\"border-bottom\">\n        <h1 class=\"h2\">Welcome back ".concat(name, "</h1>\n      </div>\n    </main>\n\n    <div class=\"container\">\n    <h1 class=\"display-5\">New Expense</h1>\n    <div class=\"col-md-6 form-group\">\n        <label for=\"expenseId\">Expense Id</label>\n        <input type=\"text\" class=\"form-control\" id=\"expenseId\" placeholder=\"Enter expense Id\" name=\"expenseId\">\n    </div>\n    <form class=\"row g-3\" id=\"expense-form\">\n      <div class=\"col-md-6 form-group\">\n        <label for=\"categoryId\">Category</label>\n        <select name=\"categoryId\" id=\"categories\"></select>\n      </div>\n      <div class=\"col-md-6\">\n        <label for=\"name\" class=\"form-label\">Expense name</label>\n        <input type=\"text\" class=\"form-control\" id=\"name\" placeholder=\"name\" required>\n      </div>\n      <div class=\"col-6\">\n        <label for=\"projectedCost\" class=\"form-label\">Projected cost</label>\n        <input type=\"text\" class=\"form-control\" id=\"projectedCost\" placeholder=\"$\" required>\n      </div>\n      <div class=\"col-6\">\n        <label for=\"actualCost\" class=\"form-label\">Actual cost</label>\n        <input type=\"text\" class=\"form-control\" id=\"actualCost\" placeholder=\"$\" required>\n      </div>\n      <div class=\"col-6\">\n        <button type=\"button\" class=\"btn btn-primary\" id=\"create\">Create</button>\n      </div>\n      <div class=\"col-6\">\n        <button type=\"button\" class=\"btn btn-primary\" id=\"update\">Update</button>\n      </div>\n      <div class=\"col-6\">\n        <button type=\"submit\" class=\"btn btn-danger\" id=\"delete\">Delete</button>\n      </div> \n    </form>\n  </div>\n</div>\n");
 
-var newExpense = function newExpense() {
+var expenseForm = function expenseForm() {
   var categoryResponse = $.ajax({
     type: "GET",
     url: "/api/categories/all-categories"
@@ -19176,11 +19176,12 @@ var newExpense = function newExpense() {
     });
     console.log("optionsHtml", optionsHtml);
     $("#categories").append(optionsHtml);
-  }); // Handle submit
+    $("#categories-update").append(optionsHtml);
+  }); // Create an expense item
 
-  $(document).on("submit", "#expense-form", /*#__PURE__*/function () {
+  $(document).on("click", "#create", /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(e) {
-      var requestBody, response, message, clearForm;
+      var requestBody, response, message;
       return regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
@@ -19207,17 +19208,7 @@ var newExpense = function newExpense() {
 
               if (response != 401) {
                 message = "\n      <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n        <strong>Successfully added expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
-
-                clearForm = function clearForm(e) {
-                  e.preventDefault();
-                  inputs.forEach(function (element) {
-                    element.value = "";
-                  });
-                  textarea.value = "";
-                };
-
-                $("body").append(message);
-                $("#expense-form").reset();
+                $("body").append(message); // Need to reset form
               }
 
               console.log("This is the response I get back ".concat(response));
@@ -19233,11 +19224,101 @@ var newExpense = function newExpense() {
     return function (_x) {
       return _ref.apply(this, arguments);
     };
+  }()); // Update form entry
+
+  $(document).on("click", "#update", /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(e) {
+      var requestBody, response, message;
+      return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              e.preventDefault();
+              requestBody = {
+                name: $("#name").val(),
+                projectedExpense: $("#projectedCost").val(),
+                actualExpense: $("#actualCost").val(),
+                categoryId: $("#categories").val()
+              };
+              _context2.next = 4;
+              return $.ajax({
+                type: "PATCH",
+                url: "/api/expenses/update-expense/".concat($("#expenseId").val()),
+                contentType: "application/json",
+                data: JSON.stringify(requestBody)
+              });
+
+            case 4:
+              response = _context2.sent;
+
+              if (response != 401) {
+                message = "\n      <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n        <strong>Successfully updated expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
+                $("body").append(message);
+              }
+
+              console.log("Successfully updated expense item");
+
+            case 7:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function (_x2) {
+      return _ref2.apply(this, arguments);
+    };
+  }()); // Delete an expense item
+
+  $(document).on("click", "#delete", /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(e) {
+      var requestBody, response, message;
+      return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        while (1) {
+          switch (_context3.prev = _context3.next) {
+            case 0:
+              e.preventDefault();
+              requestBody = {
+                name: $("#name").val(),
+                projectedExpense: $("#projectedCost").val(),
+                actualExpense: $("#actualCost").val(),
+                categoryId: $("#categories").val()
+              };
+              _context3.next = 4;
+              return $.ajax({
+                type: "DELETE",
+                url: "/api/expenses/delete-expense/".concat($("#expenseId").val()),
+                contentType: "application/json",
+                data: JSON.stringify(requestBody)
+              });
+
+            case 4:
+              response = _context3.sent;
+
+              if (response != 401) {
+                message = "\n      <div class=\"alert alert-success alert-dismissible fade show\" role=\"alert\">\n        <strong>Successfully deleted expense item</strong>\n        <button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n      </div>\n      ";
+                $("body").append(message);
+              }
+
+              console.log("Successfully deleted expense item");
+
+            case 7:
+            case "end":
+              return _context3.stop();
+          }
+        }
+      }, _callee3);
+    }));
+
+    return function (_x3) {
+      return _ref3.apply(this, arguments);
+    };
   }());
   return form;
 };
 
-var _default = newExpense;
+var _default = expenseForm;
 exports.default = _default;
 },{"./dashboard.css":"src/expenses/dashboard.css","bootstrap/dist/js/bootstrap.bundle":"node_modules/bootstrap/dist/js/bootstrap.bundle.js"}],"src/user/loginUser.js":[function(require,module,exports) {
 "use strict";
@@ -19249,7 +19330,7 @@ exports.default = void 0;
 
 var _newUser = _interopRequireDefault(require("./newUser"));
 
-var _newExpense = _interopRequireDefault(require("../expenses/newExpense"));
+var _expenseForm = _interopRequireDefault(require("../expenses/expenseForm"));
 
 require("./style.css");
 
@@ -19299,8 +19380,7 @@ var loginUser = function loginUser() {
 
               if (response != 401) {
                 $("body").empty();
-                $("body").append(_newExpense.default); //console.log(formData.username);
-                //return formData.username;
+                $("body").append(_expenseForm.default);
               }
 
             case 9:
@@ -19320,7 +19400,7 @@ var loginUser = function loginUser() {
 
 var _default = loginUser;
 exports.default = _default;
-},{"./newUser":"src/user/newUser.js","../expenses/newExpense":"src/expenses/newExpense.js","./style.css":"src/user/style.css"}],"src/app.js":[function(require,module,exports) {
+},{"./newUser":"src/user/newUser.js","../expenses/expenseForm":"src/expenses/expenseForm.js","./style.css":"src/user/style.css"}],"src/app.js":[function(require,module,exports) {
 "use strict";
 
 require("regenerator-runtime/runtime");
@@ -19361,7 +19441,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59142" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50176" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

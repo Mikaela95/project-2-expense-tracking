@@ -49,7 +49,7 @@ router.patch("/update-expense/:id", (req, res) => {
 });
 
 // Delete an expense
-router.patch("/delete-expense/:id", (req, res) => {
+router.delete("/delete-expense/:id", (req, res) => {
   ExpenseApi.findByIdAndDelete(req.params.id)
     .then((data) => {
       console.log("Delete successful");
