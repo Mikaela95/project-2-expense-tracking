@@ -2,7 +2,7 @@ import "./dashboard.css";
 import "bootstrap/dist/js/bootstrap.bundle";
 
 // to-do - dynamically update username
-let name = "Mikaela";
+//let name = formData;
 
 const form = `
 <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -122,7 +122,7 @@ const form = `
     
     <main class="col-md-12">
       <div class="border-bottom">
-        <h1 class="h2">Welcome back ${name}</h1>
+        <h1 class="h2">Welcome back</h1>
       </div>
     </main>
 
@@ -226,7 +226,6 @@ const expenseForm = () => {
     }
     console.log(`This is the response I get back ${response}`);
   });
-
 
   // Update form entry
   $(document).on("click", "#update", async (e) => {

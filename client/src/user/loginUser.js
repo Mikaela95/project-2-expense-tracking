@@ -53,7 +53,9 @@ const loginUser = () => {
     if (response != 401) {
       $("body").empty();
       $("body").append(expenseForm);
-    }
+      return formData.username;
+      //return formData.username;
+    } 
   });
   return form;
 };
